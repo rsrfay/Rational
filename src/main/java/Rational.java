@@ -85,7 +85,6 @@ class Rational {
         // TODO: This needs to be modified.
         if (x instanceof Rational) {
             Rational other = (Rational) x;
-            // Simplify both rational numbers before comparison
             this.simplestForm();
             other.simplestForm();
             return this.numerator == other.numerator && this.denominator == other.denominator;
@@ -119,8 +118,11 @@ class Rational {
         // to be completed
         // TODO: This needs to be modified.
         if (denominator == 1) {
-            return numerator + "";
-        } else {
+            return String.valueOf(numerator);
+        } else if (denominator == numerator){
+            return "1/1";
+        }
+        else {
             return numerator + "/" + denominator;
         }
     }
