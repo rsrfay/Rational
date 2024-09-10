@@ -64,7 +64,7 @@ public class RationalTest {
     }
 
     @Test
-    public void testcompareTo() {
+    public void testCompareTo() {
         Rational x = new Rational();
         x.numerator = 2;
         x.denominator = 8;
