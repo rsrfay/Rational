@@ -68,6 +68,12 @@ class Rational {
      */
     public void divide(Rational x) {
         // to be completed
+        if (x.numerator == 0) {
+            throw new ArithmeticException("Numerator is zero");
+        }
+        numerator = numerator * x.denominator;
+        denominator = denominator * x.numerator;
+        simplestForm();
     }
 
     /***
@@ -76,8 +82,15 @@ class Rational {
      * @return true if the given rational number equals to the current, false otherwise
      */
     public boolean equals(Object x) {
-        // to be completed
-        return true; // TODO: This needs to be modified.
+        // TODO: This needs to be modified.
+        if (x instanceof Rational) {
+            Rational other = (Rational) x;
+            // Simplify both rational numbers before comparison
+            this.simplestForm();
+            other.simplestForm();
+            return this.numerator == other.numerator && this.denominator == other.denominator;
+        }
+        return false;
     }
 
     /***
@@ -88,7 +101,14 @@ class Rational {
      */
     public long compareTo(Object x) {
         // to be completed
-        return -1; // TODO: this needs to be modified.
+        // TODO: this needs to be modified.
+        if (x instanceof Rational) {
+            Rational other = (Rational) x;
+            long leftSide = this.numerator * other.denominator;
+            long rightSide = this.denominator * other.numerator;
+            return Long.compare(leftSide, rightSide);
+        }
+        return -1;
     }
 
     /***
@@ -97,7 +117,12 @@ class Rational {
      */
     public String toString() { 
         // to be completed
-        return ""; // TODO: This needs to be modified.
+        // TODO: This needs to be modified.
+        if (denominator == 1) {
+            return numerator + "";
+        } else {
+            return numerator + "/" + denominator;
+        }
     }
 
     public static void main(String[] args) {
